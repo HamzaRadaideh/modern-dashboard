@@ -1,0 +1,95 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment directories
+venv/
+env/
+ENV/
+.venv/
+venv.bak/
+venv/
+
+# VS Code settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# Environments
+.env
+.env.*
+
+# Database files
+*.db
+*.sqlite3
+
+# Logs
+*.log
+
+# Alembic migration files (if you want to exclude versions)
+alembic/versions/
+
+# Static files (if generated)
+staticfiles/
+
+# Media files (if any)
+media/
+
+# Test cache
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Sphinx documentation
+docs/_build/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# macOS files
+.DS_Store
+
+# Windows files
+Thumbs.db
+Thumbs.db.*
+
+# Backup files
+*.bak
+*.swp
+*~
+
+# Node modules (if using Node.js packages)
+node_modules/
+
+# Build directories
+build/
+dist/
+
+# Compiled JavaScript files (if using TypeScript or similar)
+*.js.map
+
+# Ignore icons directory if it's not needed in the repository
+icons/
+
+# Ignore your test database
+test.db
+
+# Ignore compiled CSS (if using a preprocessor)
+*.css.map
+
+# Ignore any secret keys or configuration files
+config.yaml
+secrets.yaml
+
+# Ignore any other sensitive or temporary files
+*.tmp
+*.temp
+

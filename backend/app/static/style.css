@@ -1,3 +1,4 @@
+/* color schema */
 :root {
     --base-clr: #11121a;
     --line-clr: #42434a;
@@ -5,8 +6,11 @@
     --text-clr: #e6e6ef;
     --accent-clr: #5e63ff;
     --secoundary-text-clr: #b0b3c1;
+    --widget-clr: #191925;
+    --shadow-clr: rgba(0, 0, 0, 0.2);
 }
 
+/* global style reset */
 * {
     margin: 0;
     padding: 0;
@@ -23,9 +27,70 @@ body {
     background-color: var(--base-clr);
     color: var(--text-clr);
     display: grid;
+    grid-template-areas:
+        "sidebar main";
     grid-template-columns: auto 1fr;
 }
 
+
+
+/* main content */
+.container {
+    grid-area: main;
+
+    display: grid;
+    grid-template-areas:
+        "left right";
+    grid-template-columns: 1fr 1fr;
+    padding: min(30px, 7%);
+    gap: min(30px, 7%);
+    box-shadow: -1px 0 10px var(--shadow-clr);
+}
+
+.wrapper-title {
+    color: var(--secoundary-text-clr);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.wrapper {
+    background-color: var(--widget-clr);
+    border: 1px solid var(--line-clr);
+    border-radius: 1rem;
+    margin-bottom: 20px;
+    padding: min(10px, 15%);
+
+    h2,
+    p {
+        margin-top: 1em;
+    }
+}
+
+
+@media(max-width:800px) {
+    body {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding: 2em 1em 60px 1em;
+    }
+
+    .container {
+        border: none;
+        padding: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* sidebar */
 #sidebar {
     box-sizing: border-box;
     height: 100vh;
@@ -43,7 +108,9 @@ body {
     -o-transition: 300ms ease-in-out;
     overflow: hidden;
     text-wrap: nowrap;
+    grid-area: sidebar;
 }
+
 
 #sidebar.close {
     padding: 5px;
@@ -203,42 +270,10 @@ body {
     fill: var(--secoundary-text-clr);
 }
 
-main {
-    padding: min(30px, 7%);
-}
-
-main p {
-    color: var(--secoundary-text-clr);
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.container {
-    border: 1px solid var(--line-clr);
-    border-radius: 1rem;
-    margin-bottom: 20px;
-    padding: min(3em, 15%);
-
-    h2,
-    p {
-        margin-top: 1em;
-    }
-}
-
-
-
 @media(max-width:800px) {
-    body {
-        grid-template-columns: 1fr;
-    }
 
-    main {
-        padding: 2em 1em 60px 1em;
-    }
-
-    .container {
-        border: none;
-        padding: 0;
+    #sidebar.close {
+        width: 100%;
     }
 
     #sidebar {
@@ -250,6 +285,7 @@ main p {
         position: fixed;
         top: unset;
         bottom: 0;
+        left: 0;
 
         >ul {
             padding: 0;
@@ -309,26 +345,10 @@ main p {
                 justify-content: center;
             }
         }
-
-        /* make the log reg mobile responsive */
-
-
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* login / register */
 .sign-wrapper {
     position: absolute;
     top: 0;
@@ -337,7 +357,7 @@ main p {
     height: 100%;
     background: transparent;
     backdrop-filter: blur(15px);
-    box-shadow: -1px 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: -1px 0 10px var(--shadow-clr);
     border-left: 2px solid var(--line-clr);
     z-index: 100;
     display: flex;
@@ -489,7 +509,7 @@ main p {
     -moz-border-radius: 40px;
     -ms-border-radius: 40px;
     -o-border-radius: 40px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: -1px 0 10px var(--shadow-clr);
     cursor: pointer;
     font-size: 16px;
     color: var(--base-clr);
@@ -529,7 +549,7 @@ main p {
     background: transparent;
     border: 2px solid var(--line-clr);
     margin: 10px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: -1px 0 10px var(--shadow-clr);
     border-radius: 40px;
     -webkit-border-radius: 450px;
     -moz-border-radius: 450px;
@@ -545,7 +565,7 @@ main p {
 }
 
 .media-options a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--hover-clr);
 }
 
 .media-options a svg {
@@ -556,4 +576,101 @@ main p {
 .media-options a span {
     font-size: 16px;
     font-weight: 500;
+}
+
+@media (max-width: 800px) {
+    .sign-wrapper {
+        width: 90%;
+        height: auto;
+        padding: 15px;
+        border: none;
+        border: 1px solid var(--line-clr);
+        border-radius: 40px;
+        backdrop-filter: blur(10px);
+        margin: auto;
+        top: 20%;
+        bottom: 20%;
+        left: 0;
+        right: 0;
+        transform: none;
+        -webkit-border-radius: 40px;
+        -moz-border-radius: 40px;
+        -ms-border-radius: 40px;
+        -o-border-radius: 40px;
+    }
+
+    .icon-close {
+        top: 20px;
+        right: auto;
+        left: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        border-radius: 10px;
+    }
+
+    .logreg-box .logreg-title h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .logreg-box .logreg-title p {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .input-box {
+        height: 40px;
+        margin: 15px 0;
+    }
+
+    .input-box input {
+        font-size: 14px;
+        padding-right: 15px;
+    }
+
+    .input-box label {
+        font-size: 14px;
+    }
+
+    .remember-forget {
+        font-size: 12px;
+        margin: -10px 0 10px;
+    }
+
+    .logreg-box .btn {
+        height: 40px;
+        font-size: 14px;
+        border-radius: 30px;
+    }
+
+    .logreg-link p a {
+        font-size: 12.5px;
+    }
+
+    .media-options {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .media-options a {
+        width: 48%;
+        height: 40px;
+        font-size: 13px;
+        margin: 5px 0;
+    }
+
+    .media-options a svg {
+        font-size: 18px;
+        margin: 0 4px 1.5px 0;
+    }
+
+    .form-box {
+        padding: 15px;
+    }
+
+    .logreg-box .logreg-title {
+        margin-bottom: 10px;
+    }
 }
